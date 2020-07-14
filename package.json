@@ -1,0 +1,34 @@
+{
+  "name": "@sirubot/yt-related-scraper",
+  "version": "0.1.0",
+  "description": "A JS ported version of https://github.com/kijk2869/youtube-related Youtube Related Scraper ",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "mocha ./tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiruBOT/youtube-related-scraper.git"
+  },
+  "keywords": [
+    "scrape",
+    "youtube",
+    "related"
+  ],
+  "author": "Sannoob#0001",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SiruBOT/youtube-related-scraper/issues"
+  },
+  "homepage": "https://github.com/SiruBOT/youtube-related-scraper#readme",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
