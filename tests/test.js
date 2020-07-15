@@ -1,4 +1,7 @@
 const Client = require('../src/Client')
+const Parser = require('../src/Parser')
+const fs = require('fs')
+const path = require('path')
 const chai = require('chai')
 const expect = chai.expect
 const URLS = {
@@ -8,21 +11,26 @@ const URLS = {
   notYTURL: 'https://google.com'
 }
 
-describe('Youtube Related Scraper', () => {
-  it('URL is not valid youtube url', (done) => {
-    Client.get(URLS.notYTURL)
-      .then(() => {
-        done(new Error('It should throws error'))
-      })
-      .catch(() => done())
+// Parser
+describe('Youtube Related Scraper - Parser', () => {
+  it('Parse valid html', (done) => {
+    const parsed = Parser.parse(fs.readFileSync(path.join(__dirname, './youtube-html.html')).toString())
+    expectVideoObject(parsed)
+    done()
   })
-  it('URL is not valid youtube id', (done) => {
-    Client.get(URLS.notYTID)
-      .then(() => {
-        done(new Error('It should throws error'))
-      })
-      .catch(() => done())
+
+  it('Parse not valid html', (done) => {
+    try {
+      Parser.parse(fs.readFileSync(path.join(__dirname, './wrong-html.html')).toString())
+      done(new Error('It expect throws error, but works well'))
+    } catch {
+      done()
+    }
   })
+})
+
+// Client
+describe('Youtube Related Scraper - Client', () => {
   it('URL is valid youtube url', (done) => {
     Client.get(URLS.ytURL)
       .then((result) => {
@@ -38,6 +46,20 @@ describe('Youtube Related Scraper', () => {
         done()
       })
       .catch((e) => done(e))
+  })
+  it('URL is not valid youtube url', (done) => {
+    Client.get(URLS.notYTURL)
+      .then(() => {
+        done(new Error('It should throws error'))
+      })
+      .catch(() => done())
+  })
+  it('URL is not valid youtube id', (done) => {
+    Client.get(URLS.notYTID)
+      .then(() => {
+        done(new Error('It should throws error'))
+      })
+      .catch(() => done())
   })
 })
 
