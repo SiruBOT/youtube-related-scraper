@@ -5,12 +5,12 @@ class Parser {
    * @param {String} rawData
    */
   static ytInitialData (rawData) {
+    if (typeof rawData !== 'string') throw new Error('rawData type must be a string')
     try {
-      if (typeof rawData !== 'string') throw new Error('rawData type must be a string')
       const matchedData = rawData.match(DATA_REGEX)
       if (!matchedData[1]) throw new Error('Failed to get matched data')
       return JSON.parse(matchedData[1])
-    } catch {
+    } catch (e) {
       throw new Error('Failed to parse data json from data ' + rawData)
     }
   }
