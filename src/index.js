@@ -1,4 +1,4 @@
 module.exports = {
-    Client: require('./Client'),
-    Parser: require('./Parser')
+  Client: require('./Client'),
+  Parser: require('./Parser')
 }
