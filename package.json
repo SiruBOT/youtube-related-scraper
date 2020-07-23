@@ -15,6 +15,9 @@
     "youtube",
     "related"
   ],
+  "standard": {
+    "env": ["mocha"]
+  },
   "author": "Sannoob#0001",
   "license": "MIT",
   "bugs": {
