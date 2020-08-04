@@ -1,10 +1,10 @@
 {
   "name": "@sirubot/yt-related-scraper",
-  "version": "0.1.11",
+  "version": "0.1.2",
   "description": "A JS ported version of https://github.com/kijk2869/youtube-related Youtube Related Scraper ",
   "main": "./src/index.js",
   "scripts": {
-    "test": "mocha ./tests"
+    "test": "mocha ./tests --timeout 60000"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,9 @@
     "related"
   ],
   "standard": {
-    "env": ["mocha"]
+    "env": [
+      "mocha"
+    ]
   },
   "author": "Sannoob#0001",
   "license": "MIT",
@@ -32,6 +34,8 @@
     "mocha": "^8.0.1"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "got": "^11.5.1",
+    "ip": "^1.1.5",
+    "random-ip": "0.0.1"
   }
 }
