@@ -1,6 +1,8 @@
 const Parser = require('./Parser')
 const got = require('got')
 const statusCodes = require('http').STATUS_CODES
+const log4js = require('@log4js-node/log4js-api')
+const logger = log4js.getLogger(require('./').log4jsName)
 const RoutePlanner = require('./RoutePlanner')
 const YT_REGEX = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/
 class Client {
