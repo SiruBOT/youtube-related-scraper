@@ -40,7 +40,7 @@ async function getRelated (url) {
 
 -   IP Binding Support (RoutePlanner)
 
-```
+```js
 const { Client, RoutePlanner } = require('@sirubot/yt-related-scraper')
 const routePlanner = new RoutePlanner(['Your-CIDR-Range/16'], ['exclude-ip'], 1) // ipBlocks, excludedIps, failedRetry, -1 = Default Value, 0 = Infinity
 async function getRelated (url) {
