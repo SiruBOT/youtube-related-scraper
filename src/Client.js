@@ -15,7 +15,7 @@ class Client {
    * @returns {Promise} Result Promise
    */
   static get (url, routePlanner = null, timeout = 15000) {
-    return Promise.race([this._scrape(url, routePlanner), this._timeout(timeout)])
+    return Promise.race([this._timeout(timeout), this._scrape(url, routePlanner)])
   }
 
   static async _timeout (time) {
