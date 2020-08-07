@@ -55,7 +55,7 @@ class RoutePlanner {
   }
 
   getRandom () {
-    const sorted = this.ipBlocks.sort(el => this.sort(el.broadcastAddress))
+    const sorted = this.ipBlocks.sort(el => this.sort(el.broadcastAddress)).reverse()
     const randomResult = randomIP(sorted[0].broadcastAddress, sorted[0].subnetMasks)
     this.usedCount.set(sorted[0].broadcastAddress, this.usedCount.get(sorted[0].broadcastAddress) + 1)
     if (this.failedAddresses.size >= 1 && this.failedAddresses.size === this.ipBlocks.map(el => el.size).reduce((pre, cur) => pre + cur)) throw new Error('No IPs available')
