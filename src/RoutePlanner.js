@@ -66,8 +66,8 @@ class RoutePlanner {
   sort (a, b) {
     const countA = this.usedCount.get(a)
     const countB = this.usedCount.get(b)
-    if (countA > countB) return 1
-    if (countA < countB) return -1
+    if (countA > countB) return -1
+    if (countA < countB) return 1
     return 0
   }
 }

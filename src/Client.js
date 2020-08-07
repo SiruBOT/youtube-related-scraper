@@ -1,6 +1,7 @@
 const Parser = require('./Parser')
 const got = require('got')
 const statusCodes = require('http').STATUS_CODES
+const sleep = require('util').promisify(setTimeout)
 const log4js = require('@log4js-node/log4js-api')
 const logger = log4js.getLogger(require('./').log4jsName)
 const RoutePlanner = require('./RoutePlanner')
@@ -10,9 +11,19 @@ class Client {
    * get related video by youtube id, uri
    * @param {String} url
    * @param {RoutePlanner} routePlanner
+   * @param {Number} timeout
    * @returns {Promise} Result Promise
    */
-  static async get (url, routePlanner = null) {
+  static get (url, routePlanner = null, timeout = 15000) {
+    return Promise.race([this._scrape(url, routePlanner), this._timeout(timeout)])
+  }
+
+  static async _timeout (time) {
+    await sleep(time)
+    throw new Error('Timed out. ' + time + 'ms')
+  }
+
+  static async _scrape (url, routePlanner = null) {
     if (!url) throw new Error('No url provided')
     if (routePlanner && !(routePlanner instanceof RoutePlanner)) throw new Error('routePlanner is must be instanceof RoutePlanner')
     const defaultOptions = {
