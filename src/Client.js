@@ -31,12 +31,12 @@ class Client {
         hooks: {
           beforeRetry: [
             (options, error) => {
-              if (!(error.response.statusCode >= 200 && error.response.statusCode < 300)) {
+              if (error.response && !(error.response.statusCode >= 200 && error.response.statusCode < 300)) {
                 routePlanner.markFailedAddress(options.localAddress, error.response.statusCode)
-                const { ip, family } = routePlanner.getRandom()
-                options.localAddress = ip
-                options.dnsLookupIpVersion = family
-              }
+              } routePlanner.markFailedAddress(options.localAddress, null)
+              const { ip, family } = routePlanner.getRandom()
+              options.localAddress = ip
+              options.dnsLookupIpVersion = family
             }
           ]
         }
