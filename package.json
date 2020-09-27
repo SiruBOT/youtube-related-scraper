@@ -4,7 +4,8 @@
   "description": "A JS ported version of https://github.com/kijk2869/youtube-related Youtube Related Scraper ",
   "main": "./src/index.js",
   "scripts": {
-    "test": "mocha ./tests --timeout 60000"
+    "test": "nyc --reporter=lcov mocha ./tests --timeout 60000",
+    "coverage": "codecov"
   },
   "repository": {
     "type": "git",
@@ -32,8 +33,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "codecov": "^3.7.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^8.0.1"
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0"
   },
   "dependencies": {
     "@log4js-node/log4js-api": "^1.0.2",

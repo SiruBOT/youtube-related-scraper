@@ -2,9 +2,6 @@ language: node_js
 node_js:
   - 12
 install:
-  - npm install -g codecov
-  - npm install istanbul -g
   - npm install --save-dev
-script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha ./tests -- -R spec
-  - codecov
+after_success:
+  - npm run coverage
