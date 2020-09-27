@@ -1,6 +1,6 @@
 {
   "name": "@sirubot/yt-related-scraper",
-  "version": "0.2.31",
+  "version": "0.2.32",
   "description": "A JS ported version of https://github.com/kijk2869/youtube-related Youtube Related Scraper ",
   "main": "./src/index.js",
   "scripts": {
@@ -30,6 +30,9 @@
   "directories": {
     "test": "tests"
   },
+  "files": [
+    "src"
+  ],
   "devDependencies": {
     "chai": "^4.2.0",
     "codecov": "^3.7.2",
