@@ -1,6 +1,6 @@
 {
   "name": "@sirubot/yt-related-scraper",
-  "version": "0.2.22",
+  "version": "0.2.3",
   "description": "A JS ported version of https://github.com/kijk2869/youtube-related Youtube Related Scraper ",
   "main": "./src/index.js",
   "scripts": {
