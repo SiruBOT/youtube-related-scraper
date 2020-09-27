@@ -6,5 +6,5 @@ install:
   - npm install istanbul -g
   - npm install --save-dev
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
+  - istanbul cover ./node_modules/mocha/bin/_mocha ./tests -- -R spec
   - codecov
