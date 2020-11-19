@@ -1,4 +1,5 @@
-const DATA_REGEX = /window\["ytInitialData"\]\s=\s(\{.*\})/
+// const DATA_REGEX = /window\["ytInitialData"\]\s=\s(\{.*\})/
+const DATA_REGEX = /(?:window\["ytInitialData"\]|ytInitialData)\W?=\W?({.*?});/
 class Parser {
   /**
    * regex match 'ytInitialData' data from youtube html data
