@@ -1,11 +1,11 @@
 {
   "name": "@sirubot/yt-related-scraper",
-  "version": "0.3.0-alpha.1",
+  "version": "0.3.0-alpha.3",
   "description": "A lightweight YouTube related video scraper with a ip rotation",
   "main": "./src/index.js",
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
-    "publish": "yarn run build && yarn publish"
+    "build:publish": "yarn run build && yarn publish"
   },
   "files": [
     "dist"
