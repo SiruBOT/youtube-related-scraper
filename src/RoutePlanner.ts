@@ -5,7 +5,7 @@ import { ILoggerLike } from "./types/ILoggerLike";
 
 export interface RoutePlannerOptions {
   ipBlocks: string[];
-  excludeIps: [];
+  excludeIps: string[];
   log?: ILoggerLike;
 }
 
