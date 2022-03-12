@@ -1,48 +1,48 @@
 {
   "name": "@sirubot/yt-related-scraper",
-  "version": "0.2.33",
-  "description": "A JS ported version of https://github.com/kijk2869/youtube-related Youtube Related Scraper ",
+  "version": "0.3.0-alpha.1",
+  "description": "A lightweight YouTube related video scraper with a ip rotation",
   "main": "./src/index.js",
   "scripts": {
-    "test": "nyc --reporter=lcov mocha ./tests --timeout 60000",
-    "coverage": "codecov"
+    "build": "tsc --project ./tsconfig.json",
+    "publish": "yarn run build && yarn publish"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SiruBOT/youtube-related-scraper.git"
   },
   "keywords": [
-    "scrape",
-    "youtube",
-    "related"
+    "scraper",
+    "ipRotation",
+    "crawler"
   ],
-  "standard": {
-    "env": [
-      "mocha"
-    ]
-  },
-  "author": "Sannoob#0001",
-  "license": "MIT",
+  "author": "Sannoob#3144",
+  "license": "WTFPL",
   "bugs": {
     "url": "https://github.com/SiruBOT/youtube-related-scraper/issues"
   },
   "homepage": "https://github.com/SiruBOT/youtube-related-scraper#readme",
-  "directories": {
-    "test": "tests"
-  },
-  "files": [
-    "src"
-  ],
   "devDependencies": {
-    "chai": "^4.2.0",
-    "codecov": "^3.7.2",
-    "mocha": "^8.0.1",
-    "nyc": "^15.1.0"
+    "@types/ip": "^1.1.0",
+    "@types/node": "^17.0.21",
+    "@types/node-fetch": "^2.6.1",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.6.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "dependencies": {
-    "@log4js-node/log4js-api": "^1.0.2",
-    "got": "^11.5.1",
+    "abort-controller": "^3.0.0",
     "ip": "^1.1.5",
-    "random-ip": "0.0.1"
+    "node-fetch": "^2.6.7"
   }
 }
