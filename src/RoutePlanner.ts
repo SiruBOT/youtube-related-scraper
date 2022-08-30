@@ -5,7 +5,7 @@ import { ILoggerLike } from "./types/ILoggerLike";
 
 export interface RoutePlannerOptions {
   ipBlocks: string[];
-  excludeIps: string[];
+  excludeIps?: string[];
   log?: ILoggerLike;
 }
 
@@ -23,12 +23,12 @@ export class IpBlock {
 }
 
 export class RoutePlanner {
-  private excludeIps: string[];
+  private excludeIps: string[] = [];
   private ipBlocks: IpBlock[];
   private failedAddresses: Map<string, number>;
   private log?: ILoggerLike;
   constructor({ ipBlocks, excludeIps, log }: RoutePlannerOptions) {
-    this.excludeIps = excludeIps;
+    this.excludeIps = excludeIps ?? [];
     this.ipBlocks = ipBlocks.map((ip: string) => new IpBlock(ip));
     this.failedAddresses = new Map();
     this.log = log;
