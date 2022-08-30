@@ -1,9 +1,11 @@
-# youtube-related-scraper
+<h1 align="center">⭐  youtube-related-scraper
 
 [![Build Status](https://travis-ci.org/SiruBOT/youtube-related-scraper.svg?branch=master)](https://travis-ci.org/SiruBOT/youtube-related-scraper)
 [![npm version](https://badge.fury.io/js/%40sirubot%2Fyt-related-scraper.svg)](https://badge.fury.io/js/%40sirubot%2Fyt-related-scraper)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6a8ff39161674738806a8b245923c75e)](https://www.codacy.com/gh/SiruBOT/youtube-related-scraper?utm_source=github.com&utm_medium=referral&utm_content=SiruBOT/youtube-related-scraper&utm_campaign=Badge_Grade)   
 [![NPM](https://nodei.co/npm/@sirubot/yt-related-scraper.png)](https://nodei.co/npm/@sirubot/yt-related-scraper/)
+</h1>
+
 
 ## Example Code
 
