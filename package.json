@@ -1,6 +1,6 @@
 {
   "name": "@sirubot/yt-related-scraper",
-  "version": "0.3.1-alpha.3",
+  "version": "0.3.1-alpha.31",
   "description": "YouTube related video scraper with a ip rotation",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
