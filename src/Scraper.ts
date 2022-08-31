@@ -5,6 +5,7 @@ import { YoutubeParser } from "./YoutubeParser";
 import { YOUTUBE_URL_WATCH } from "./Constant";
 import fetch, { type RequestInit } from "node-fetch";
 import { AbortController } from "abort-controller";
+import ip from "ip";
 import http from "node:http";
 import https from "node:https";
 
@@ -48,6 +49,7 @@ export class Scraper {
       this.log?.debug(`Bind ip address ${idealIp} to http Agent`);
       const agentOptions: http.AgentOptions | https.AgentOptions = {
         localAddress: idealIp,
+        family: ip.isV4Format(idealIp) ? 4 : 6,
       };
       fetchOptions.agent = (_parsedURL: URL) => {
         if (_parsedURL.protocol == "http:") {
