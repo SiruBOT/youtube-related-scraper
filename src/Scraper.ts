@@ -31,7 +31,7 @@ export class Scraper {
     routePlanner?: RoutePlanner
   ): Promise<IRelatedVideo[] | null> {
     this.log?.debug(
-      `Scrape related video of ${identifier} ${
+      `[youtube-related-scraper] [Scraper] Scrape related video of ${identifier} ${
         routePlanner ? "with RoutePlanner" : ""
       } (Timeout: ${this.timeout})`
     );
@@ -46,7 +46,9 @@ export class Scraper {
     // With RoutePlanner
     if (routePlanner) {
       const idealIp: string = routePlanner.getIdealIp();
-      this.log?.debug(`Bind ip address ${idealIp} to http Agent`);
+      this.log?.info(
+        `[youtube-related-scraper] [Scraper] Bind ip address ${idealIp} to http Agent`
+      );
       const agentOptions: http.AgentOptions | https.AgentOptions = {
         localAddress: idealIp,
         family: ip.isV4Format(idealIp) ? 4 : 6,
@@ -68,7 +70,7 @@ export class Scraper {
     } catch (error) {
       // Timeout Error
       if ((error as Error).name === "AbortError") {
-        throw new Error(`Timeout exceeded ${this.timeout}`);
+        throw new Error(`[Scraper] Timeout exceeded ${this.timeout}`);
       } else {
         throw error;
       }

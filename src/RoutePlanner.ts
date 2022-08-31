@@ -9,16 +9,16 @@ export interface RoutePlannerOptions {
   log?: ILoggerLike;
 }
 
+// CIDR = ffff:ffff:ffff::
+// subnetInfo.subnetMaskLength = ffff:ffff:ffff::/48
 export class IpBlock {
   public usedCount: number;
-  public failedCount: number;
   public readonly cidr: string;
-  public readonly subnetInfo: SubnetInfo;
-  constructor(cidr: string) {
+  public readonly cidrSize: number;
+  constructor(blockString: string) {
     this.usedCount = 0;
-    this.failedCount = 0;
-    this.cidr = cidr;
-    this.subnetInfo = ip.cidrSubnet(cidr);
+    this.cidr = ip.cidr(blockString);
+    this.cidrSize = ip.cidrSubnet(blockString).subnetMaskLength;
   }
 }
 
@@ -39,8 +39,11 @@ export class RoutePlanner {
     if (!idealIpBlock)
       throw new Error(`${ROUTEPLANNER_NO_IPS} No ip address available`);
     const randomIp: string = RandomIp.getRandomIp(
-      idealIpBlock.subnetInfo.networkAddress,
-      idealIpBlock.subnetInfo.subnetMaskLength
+      idealIpBlock.cidr,
+      idealIpBlock.cidrSize
+    );
+    this.log?.debug(
+      `[Routeplanner] Get ideal ip from block ${idealIpBlock?.cidr}/${idealIpBlock?.cidrSize}`
     );
     if (
       this.excludeIps.includes(randomIp) ||
@@ -48,6 +51,8 @@ export class RoutePlanner {
     ) {
       return this.getIdealIp();
     } else {
+      this.ipBlocks[this.ipBlocks.findIndex((e) => e.cidr == idealIpBlock.cidr)]
+        .usedCount++;
       return randomIp;
     }
   }
